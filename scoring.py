@@ -27,8 +27,10 @@ def quali_position(round_number):
 
 
 #fant_score_quali = {}
-def quali_fantasy_score(dictionary, fant_score_quali = {}):
+def quali_fantasy_score(dictionary, fant_score_quali = None):
     """Gives the fantasy score from the qualifying round"""
+    if fant_score_quali is None:
+        fant_score_quali = {}
     quali_scoring = {1: 10, 2: 9, 3: 8, 4:7, 5:6, 6:5, 7:4, 8:3, 9:2, 10:1}
     
     #return {k:quali_scoring.get(v,0) for k,v in dictionary.items() if v !="NC/DSQ"}
@@ -69,8 +71,10 @@ def race_position(round_number):
 
 
 
-def race_fantasy_score(dictionary, fant_score_race = {}):
+def race_fantasy_score(dictionary, fant_score_race = None):
     """Gives the fantasy score from the race"""
+    if fant_score_race is None:
+        fant_score_race = {}
     race_scoring = {1:25, 2:18, 3:15, 4:12, 5:10, 6:8, 7:6, 8:4, 9:2, 10:1}
     
     for k,v in dictionary.items():
@@ -104,8 +108,10 @@ def sprint_race_position(round_number):
             sprint_race_place[row.Abbreviation] = "NC/DSQ"
     return sprint_race_place
 
-def sprint_race_fantasy_score(dictionary, fant_score_sprint_race = {}):
+def sprint_race_fantasy_score(dictionary, fant_score_sprint_race = None):
     """Gives the fantasy score for the sprint race"""
+    if fant_score_sprint_race is None:
+        fant_score_sprint_race = {}
     sprint_race_scoring = {1:8, 2:7, 3:6, 4:5, 5:4, 6:3, 7:2, 8:1}
     
     for k,v in dictionary.items():
@@ -158,3 +164,10 @@ def fantasy_score_weekend(round_number):
         race_points_dict = race_fantasy_score(position2)
         quali_and_race_points = fantasy_score_quali_plus_race(quali_points_dict, race_points_dict)
         return quali_and_race_points
+    
+# def clear_score():
+#     fant_score_race = {}
+#     race_fantasy_score(1)
+
+
+
